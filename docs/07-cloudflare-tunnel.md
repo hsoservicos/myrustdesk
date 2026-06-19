@@ -46,13 +46,13 @@ o RustDesk não funciona. Diversas fontes confirmam esta limitação:
 ### Como funciona
 
 ```
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│  Cliente Remoto  │     │   Cloudflare     │     │    Servidor      │
-│  (com WARP)      │◄───►│   Edge Network   │◄───►│  (cloudflared)   │
-│                  │     │  (Zero Trust)    │     │                  │
-│  RustDesk →      │     │  Rota Private:   │     │  Rota:           │
-│  192.168.1.100   │     │  192.168.1.0/24  │     │  192.168.1.100   │
-└─────────────────┘     └─────────────────┘     └─────────────────┘
+┌──────────────────┐     ┌──────────────────┐     ┌─────────────────┐
+│  Cliente Remoto  │     │   Cloudflare     │     │    Servidor     │
+│  (com WARP)      │◄───►│   Edge Network   │◄───►│  (cloudflared)  │
+│                  │     │  (Zero Trust)    │     │                 │
+│  RustDesk →      │     │  Rota Private:   │     │  Rota:          │
+│  192.168.1.100   │     │  192.168.1.0/24  │     │  192.168.1.100  │
+└──────────────────┘     └──────────────────┘     └─────────────────┘
 ```
 
 O cliente WARP + cloudflared criam uma **rede privada virtual** sobre a
@@ -418,3 +418,6 @@ acesso com regras de firewall restritivas.
 - [Cloudflare Community — RustDesk](https://community.cloudflare.com/t/rustdesk-compatible/507510)
 - [RustDesk Web Client](https://rustdesk.com/web/)
 - [Private Network with WARP](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/)
+
+---
+

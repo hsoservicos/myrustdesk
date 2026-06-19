@@ -102,3 +102,5 @@ crontab -e
 # Adicionar linha (backup diário às 2h)
 0 2 * * * cd /caminho/para/rustdesk && tar -czf backups/rustdesk-$(date +\%Y\%m\%d).tar.gz ./data/ && find backups/ -name "*.tar.gz" -mtime +30 -delete
 ```
+---
+

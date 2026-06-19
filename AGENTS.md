@@ -3,7 +3,7 @@
 **Repo:** https://github.com/hsoservicos/myrustdesk.git
 
 ## Goal
-Manter documentação completa e scripts automatizados para implantação de servidor RustDesk OSS self-hosted, incluindo guia VPS com 14 provedores analisados.
+Manter documentação completa, scripts automatizados e estudos de custo-benefício para implantação de servidor RustDesk OSS self-hosted com acesso externo seguro, abrangendo 14 provedores VPS, 6 métodos de exposição, deploy de clientes em 7 plataformas e manual operacional para leigos.
 
 ## Constraints & Preferences
 - Documentação em português brasileiro para colaborador inexperiente.
@@ -11,6 +11,7 @@ Manter documentação completa e scripts automatizados para implantação de ser
 - Instalação principal via Docker; alternativa com script automatizado.
 - Preferência por soluções gratuitas ou de baixo custo para VPS e exposição externa.
 - Orçamento VPS: provedores de boa relação custo-benefício globais (Hetzner, Contabo, Oracle, Lightsail, Hostinger, HostGator) e brasileiros (Locaweb, KingHost, HostGator Brasil, Audaks, Umbler, Hostinger Brasil).
+- Repositório GitHub: `https://github.com/hsoservicos/myrustdesk` (branch `main`).
 
 ## Progress
 ### Done
@@ -51,6 +52,8 @@ Manter documentação completa e scripts automatizados para implantação de ser
   - `scripts/deploy-client-windows.ps1`: suporte a x86_64/x86_32, download via API, instalação MSI
   - `scripts/deploy-client-linux.sh`: detecção de arquitetura (x86_64/aarch64/armv7), RPM + DEB + pacman
   - `scripts/deploy-client-macos.sh`: detecção Intel vs Apple Silicon, download via API
+- Criação de `docs/12-fluxo-implantacao.md` — fluxo único de implantação do zero: contratar VPS → provisionar → verificar → expor Cloudflare → deploy clientes → testar, com referências cruzadas para todos os docs.
+- Criação de `.github/workflows/syntax-checks.yml` — CI com 4 jobs: ShellCheck (.sh), PSScriptAnalyzer (.ps1), yamllint (compose), ShellCheck (raiz).
 
 ### In Progress
 - (none)
@@ -61,14 +64,17 @@ Manter documentação completa e scripts automatizados para implantação de ser
 ## Key Decisions
 - Docker + Docker Compose como método principal de instalação.
 - `network_mode: host` necessário para UDP 21116 e performance de rede.
-- Cloudflare Zero Trust + WARP (Método A) como abordagem recomendada para acesso externo: única solução gratuita TCP+UDP.
+- Cloudflare Zero Trust + WARP (Método A) como abordagem recomendada para acesso externo: única solução gratuita TCP+UDP (cloudflared gratuito não proxy UDP).
 - Script `provision-vps.sh` unificado que cobre todo o setup inicial da VPS.
-- Hetzner CX22 (~US$ 4/mês) como melhor custo-benefício global; Lightsail como opção AWS com datacenter SP; KingHost/Hostinger Brasil como líderes nacionais.
+- Hetzner CAX11 (~US$ 4/mês) como melhor custo-benefício global; Lightsail AWS SP como opção com datacenter Brasil.
+- Hostinger KVM 1 (4 GB RAM, NVMe) a US$ 6,50/mês (global) ou R$ 29,99/mês (BR promo 2 anos) — melhor custo-benefício nacional, com suporte em português.
 - HostGator US/Global não recomendado (custo 8x maior que Hetzner para mesma RAM).
+- Tailscale Free + Direct IP (US$ 0) recomendado para uso pessoal/família — elimina servidor RustDesk.
+- Alternativas gerenciadas (SoftAcesso, GoDesk) mais baratas que self-hosted para quem não tem conhecimento técnico.
 
 ## Next Steps
-- Consolidar todos os documentos em um fluxo único de implantação do zero: contratar VPS → provisionar → setup RustDesk → expor com Cloudflare → deploy clientes.
-- (Opcional) Adicionar testes de sintaxe para scripts.
+- (nenhum pendente — ambos os itens concluídos)
+- Possíveis próximos: adicionar testes de integração Docker, validar scripts em container Ubuntu 24.04 real, criar vídeo tutorial ou documentação em vídeo.
 
 ## Critical Context
 - RustDesk depende de **UDP** (porta 21116) para heartbeat/ID registration. Cloudflare Tunnel gratuito **não** proxy UDP — apenas WARP (overlay WireGuard) suporta UDP.
@@ -79,6 +85,10 @@ Manter documentação completa e scripts automatizados para implantação de ser
 - HostGator US: Snappy 2000 (2 vCPU, 4 GB DDR5, NVMe) a US$ 34,99/mês — **não recomendado** pelo custo elevado.
 - Hostinger Brasil: KVM 1 (4 GB RAM, NVMe) por R$ 29,99/mês (promo 2 anos) — melhor custo-benefício nacional.
 - Tabela 6.2 corrigida: Hostinger KVM 1 agora reflete 4 GB RAM (não 1 GB como anteriormente).
+- RustDesk Server Pro: Individual US$ 9,90/mês (anual US$ 119), Basic US$ 19,90/mês (US$ 239/ano), Customized US$ 19,90 + US$ 1/user extra + US$ 0,10/device.
+- SoftAcesso: R$ 29/mês, suporte PT-BR, PIX, sem necessidade de servidor. 87% mais barato que self-hosted para não-técnicos.
+- Scripts deploy-cliente agora usam API GitHub para detectar a versão mais recente dinamicamente.
+- iOS só pode **controlar** outros dispositivos, não pode ser controlado.
 
 ## Relevant Files
 - `/home/hsantos/projetos/rustdesk/compose.yml`: orquestração Docker hbbs + hbbr (network_mode host).
@@ -95,3 +105,10 @@ Manter documentação completa e scripts automatizados para implantação de ser
 - `/home/hsantos/projetos/rustdesk/docs/07-cloudflare-tunnel.md`: 4 métodos de exposição externa via Cloudflare.
 - `/home/hsantos/projetos/rustdesk/docs/08-hardware.md`: dimensionamento de hardware (4 cenários + calculadora).
 - `/home/hsantos/projetos/rustdesk/docs/09-vps.md`: guia completo de VPS com 14 provedores.
+- `/home/hsantos/projetos/rustdesk/docs/10-estudo-custo-beneficio.md`: estudo custo-benefício com 6 métodos de exposição, 3 licenças, fluxo de decisão.
+- `/home/hsantos/projetos/rustdesk/docs/11-manual-operacional-cliente.md`: manual operacional do cliente para 7 plataformas (leigos).
+- `/home/hsantos/projetos/rustdesk/docs/12-fluxo-implantacao.md`: fluxo único de implantação do zero.
+- `/home/hsantos/projetos/rustdesk/.github/workflows/syntax-checks.yml`: CI com ShellCheck, PSScriptAnalyzer, yamllint.
+
+---
+

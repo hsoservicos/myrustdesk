@@ -37,6 +37,8 @@ Inclui:
 - **Guia VPS** com 14 provedores analisados e comparados
 - **Cloudflare Tunnel + WARP** para exposição externa segura
 - **Provisionamento automatizado** do zero na VPS
+- **Fluxo único de implantação** — 6 etapas para sair do zero
+- **CI integrado** — validação de sintaxe de todos os scripts
 
 ---
 
@@ -51,6 +53,8 @@ Inclui:
 - **🛡️ Cloudflare WARP** — exposição externa gratuita com suporte a UDP
 - **📘 Manual para leigos** — passo a passo desde "o que é uma VPS" até "cliente conectado"
 - **🔧 Provisionamento completo** — SSH hardening, fail2ban, unattended-upgrades, swap
+- **🗺️ Fluxo único de implantação** — do zero ao cliente funcionando em 6 etapas
+- **✅ CI integrado** — validação automática de sintaxe de todos os scripts
 
 ---
 
@@ -150,6 +154,7 @@ e timer semanal de manutenção.
 | [`docs/09-vps.md`](docs/09-vps.md) | Tomadores de decisão | ★ Guia completo: 14 provedores, tabelas, matriz de decisão, passo a passo de contratação |
 | [`docs/10-estudo-custo-beneficio.md`](docs/10-estudo-custo-beneficio.md) | Tomadores de decisão | ★ Estudo custo-benefício: 6 métodos de exposição, 3 licenças, alternativas gerenciadas |
 | [`docs/11-manual-operacional-cliente.md`](docs/11-manual-operacional-cliente.md) | Usuários finais | ★ Manual completo: instalação em 7 plataformas, configuração, uso, troubleshooting |
+| [`docs/12-fluxo-implantacao.md`](docs/12-fluxo-implantacao.md) | Administradores | ★ Fluxo único do zero: contratar VPS → provisionar → expor → deploy clientes |
 
 ---
 
@@ -218,6 +223,9 @@ Analisamos 14 provedores para você escolher o melhor custo-benefício:
 myrustdesk/
 ├── README.md                         # Este arquivo
 ├── MANUAL_IMPLANTACAO.md             # ★ Manual completo para iniciantes
+├── .github/
+│   └── workflows/
+│       └── syntax-checks.yml         # CI: ShellCheck + PSScriptAnalyzer + yamllint
 ├── compose.yml                       # Orquestração Docker (hbbs + hbbr)
 ├── compose-cloudflared.yml           # Orquestração Docker (cloudflared)
 ├── .env                              # Variáveis de ambiente
@@ -232,7 +240,8 @@ myrustdesk/
 │   ├── 08-hardware.md                # ★ Dimensionamento de hardware
 │   ├── 09-vps.md                     # ★ Guia de 14 provedores VPS
 │   ├── 10-estudo-custo-beneficio.md  # ★ Estudo custo-benefício acesso externo
-│   └── 11-manual-operacional-cliente.md # ★ Manual operacional do cliente
+│   ├── 11-manual-operacional-cliente.md # ★ Manual operacional do cliente
+│   └── 12-fluxo-implantacao.md       # ★ Fluxo único de implantação
 └── scripts/
     ├── provision-vps.sh              # ★ Provisionamento automático de VPS
     ├── setup-server.sh               # ★ Implantação do servidor
@@ -297,6 +306,9 @@ bash -n scripts/*.sh                 # Validação de sintaxe Bash
 pwsh -c "Get-Command scripts/*.ps1"  # Validação PowerShell
 ```
 
+O CI ([`.github/workflows/syntax-checks.yml`](.github/workflows/syntax-checks.yml))
+executa automaticamente ShellCheck, PSScriptAnalyzer e yamllint em cada push/PR.
+
 ---
 
 ## Roadmap
@@ -309,8 +321,8 @@ pwsh -c "Get-Command scripts/*.ps1"  # Validação PowerShell
 - [x] Script de provisionamento de VPS
 - [x] Deploy scripts para clientes (Win/Lin/macOS)
 - [x] Manual completo para iniciantes
-- [ ] Testes de sintaxe automatizados (CI)
-- [ ] Fluxo unificado VPS → provisioning → deploy
+- [x] Fluxo unificado VPS → provisionar → Cloudflare → deploy clientes
+- [x] CI com testes de sintaxe (ShellCheck + PSScriptAnalyzer + yamllint)
 - [ ] Suporte a Docker Compose com rede bridge (alternativa a host)
 - [ ] Template de configuração Ansible
 
@@ -332,3 +344,6 @@ O RustDesk Server OSS é distribuído sob a [licença AGPL-3.0](https://github.c
 - [rustdesk-server (GitHub)](https://github.com/rustdesk/rustdesk-server) — Código-fonte do servidor
 - [Docker Setup](https://rustdesk.com/docs/en/self-host/rustdesk-server-oss/docker/) — Setup oficial Docker
 - [Cloudflare Zero Trust](https://www.cloudflare.com/zero-trust/) — Solução de acesso externo
+
+---
+

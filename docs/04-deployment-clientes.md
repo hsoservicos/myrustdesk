@@ -112,3 +112,6 @@ RustDesk ID: <id_do_dispositivo>
 Password: <senha_aleatoria>
 ...............................................
 ```
+
+---
+

@@ -109,3 +109,6 @@ sudo ss -ulnp | grep 21116
 # Ver logs
 sudo docker compose logs --tail=50
 ```
+
+---
+

@@ -461,3 +461,6 @@ Assim, mesmo se o computador reiniciar, o RustDesk vai iniciar automático.
 | **Android** | Google Play Store ou GitHub APK |
 | **iPhone/iPad** | Apple App Store |
 | **Página oficial** | [https://rustdesk.com](https://rustdesk.com) |
+
+---
+

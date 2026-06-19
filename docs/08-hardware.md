@@ -300,7 +300,7 @@ Largura necessária:
 RAM necessária:
   até 50 dispositivos:  1 GB
   até 200 dispositivos: 2 GB
-  até 1000+:             4 GB+
+  até 1000+:            4 GB+
 
 Disco necessário:
   20 GB base + 500 MB por ano de logs
@@ -455,3 +455,6 @@ redirecionadas no roteador para o IP do servidor:
 - [GitHub Discussion #4857 — 1GB/1vCPU server enough?](https://github.com/rustdesk/rustdesk/discussions/4857)
 - [DeepWiki — RustDesk Server System Requirements](https://deepwiki.com/rustdesk/doc.rustdesk.com/2-server-installation)
 - [GitHub rustdesk-server — Performance Tuning](https://deepwiki.com/rustdesk/rustdesk-server/7.4-performance-tuning)
+
+---
+

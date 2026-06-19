@@ -74,3 +74,6 @@ Se o hole punching não funcionar na rede, configure o relay explicitamente:
 ### Cliente Web (Opcional)
 
 Para usar o [Cliente Web RustDesk](https://rustdesk.com/web/), é necessário configurar um proxy reverso Nginx com suporte WSS (WebSocket Secure). Consulte a documentação oficial para detalhes.
+
+---
+

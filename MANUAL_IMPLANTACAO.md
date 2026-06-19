@@ -665,3 +665,6 @@ cd ~/rustdesk && sudo docker compose pull && sudo docker compose up -d
 # Fazer backup
 cd ~/rustdesk && tar -czf backup-$(date +%Y%m%d).tar.gz rustdesk-data/
 ```
+
+---
+

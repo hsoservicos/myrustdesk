@@ -138,3 +138,6 @@ sudo chown -R 1000:1000 ./data/
 # Ou use o usuário atual
 sudo chown -R $(id -u):$(id -g) ./data/
 ```
+
+---
+
