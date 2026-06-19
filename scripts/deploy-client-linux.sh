@@ -8,65 +8,93 @@
 rustdesk_cfg="configstring"
 # ----------------------
 
-# Gera senha aleatória de 8 caracteres
-rustdesk_pw=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 8 | head -n 1)
+rustdesk_pw=$(tr -dc 'a-zA-Z0-9' < /dev/urandom | fold -w 12 | head -n 1)
 
 ################################## Nao edite abaixo #########################################
 
 if [[ $EUID -ne 0 ]]; then
-    echo "Este script deve ser executado como root."
+    echo "Execute como root: sudo bash $0"
     exit 1
 fi
 
-# Identifica SO
+set -e
+
+# Detecta arquitetura
+arch=$(uname -m)
+case "$arch" in
+    x86_64)  pkg_arch="x86_64" ;;
+    aarch64) pkg_arch="aarch64" ;;
+    armv7l)  pkg_arch="armv7"  ;;
+    *)
+        echo "Arquitetura nao suportada: $arch"
+        exit 1
+        ;;
+esac
+
+# Detecta ultima versao no GitHub
+echo "Obtendo ultima versao..."
+tag=$(curl -sL https://api.github.com/repos/rustdesk/rustdesk/releases/latest | grep '"tag_name"' | head -1 | cut -d'"' -f4 | sed 's/^v//')
+echo "Versao encontrada: $tag"
+
+# Detecta OS
 if [ -f /etc/os-release ]; then
     . /etc/os-release
-    OS=$NAME
-    VER=$VERSION_ID
-    UPSTREAM_ID=${ID_LIKE,,}
-    if [ "${UPSTREAM_ID}" != "debian" ] && [ "${UPSTREAM_ID}" != "ubuntu" ]; then
-        UPSTREAM_ID="$(echo ${ID_LIKE,,} | sed s/\"//g | cut -d' ' -f1)"
-    fi
-elif type lsb_release >/dev/null 2>&1; then
-    OS=$(lsb_release -si)
-    VER=$(lsb_release -sr)
-elif [ -f /etc/lsb-release ]; then
-    . /etc/lsb-release
-    OS=$DISTRIB_ID
-    VER=$DISTRIB_RELEASE
-elif [ -f /etc/debian_version ]; then
-    OS=Debian
-    VER=$(cat /etc/debian_version)
-elif [ -f /etc/SuSE-release ]; then
-    OS=SuSE
-    VER=$(cat /etc/SuSE-release)
-elif [ -f /etc/redhat-release ]; then
-    OS=RedHat
-    VER=$(cat /etc/redhat-release)
+    OS=$ID
+    OS_LIKE=$ID_LIKE
 else
-    OS=$(uname -s)
-    VER=$(uname -r)
-fi
-
-echo "Instalando RustDesk para $OS $VER"
-
-if [ "${ID}" = "debian" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian" ] || [ "${UPSTREAM_ID}" = "ubuntu" ] || [ "${UPSTREAM_ID}" = "debian" ]; then
-    wget -q https://github.com/rustdesk/rustdesk/releases/download/1.2.6/rustdesk-1.2.6-x86_64.deb
-    apt-get install -fy ./rustdesk-1.2.6-x86_64.deb > /dev/null
-elif [ "$OS" = "CentOS" ] || [ "$OS" = "RedHat" ] || [ "$OS" = "Fedora Linux" ] || [ "${UPSTREAM_ID}" = "rhel" ] || [ "$OS" = "Almalinux" ] || [ "$OS" = "Rocky"* ]; then
-    wget -q https://github.com/rustdesk/rustdesk/releases/download/1.2.6/rustdesk-1.2.6-0.x86_64.rpm
-    yum localinstall ./rustdesk-1.2.6-0.x86_64.rpm -y > /dev/null
-else
-    echo "SO nao suportado: $OS"
+    echo "Nao foi possivel detectar o sistema operacional."
     exit 1
 fi
 
+DOWNLOAD_URL="https://github.com/rustdesk/rustdesk/releases/download/v${tag}"
+
+case "$OS" in
+    debian|ubuntu|linuxmint|pop)
+        pkg="rustdesk-${tag}-${pkg_arch}.deb"
+        echo "Baixando $pkg ..."
+        wget -q "${DOWNLOAD_URL}/${pkg}"
+        apt-get install -fy "./${pkg}" > /dev/null
+        ;;
+    fedora|centos|rhel|rocky|almalinux)
+        pkg="rustdesk-${tag}-0.${pkg_arch}.rpm"
+        echo "Baixando $pkg ..."
+        wget -q "${DOWNLOAD_URL}/${pkg}"
+        yum localinstall -y "./${pkg}" > /dev/null
+        ;;
+    arch|manjaro)
+        pacman -S --noconfirm rustdesk > /dev/null 2>&1 || {
+            echo "RustDesk nao encontrado nos repositorios. Instale manualmente."
+            exit 1
+        }
+        ;;
+    *)
+        # Tenta identificar por ID_LIKE
+        if echo "$OS_LIKE" | grep -qi "debian\|ubuntu"; then
+            pkg="rustdesk-${tag}-${pkg_arch}.deb"
+            echo "Baixando $pkg ..."
+            wget -q "${DOWNLOAD_URL}/${pkg}"
+            apt-get install -fy "./${pkg}" > /dev/null
+        elif echo "$OS_LIKE" | grep -qi "rhel\|fedora\|centos"; then
+            pkg="rustdesk-${tag}-0.${pkg_arch}.rpm"
+            echo "Baixando $pkg ..."
+            wget -q "${DOWNLOAD_URL}/${pkg}"
+            yum localinstall -y "./${pkg}" > /dev/null
+        else
+            echo "SO nao suportado: $OS ($OS_LIKE)"
+            echo "Tente a versao AppImage: ${DOWNLOAD_URL}/rustdesk-${tag}-${pkg_arch}.AppImage"
+            exit 1
+        fi
+        ;;
+esac
+
+echo "Configurando..."
 rustdesk_id=$(rustdesk --get-id)
-rustdesk --password $rustdesk_pw &> /dev/null
-rustdesk --config $rustdesk_cfg
-systemctl restart rustdesk
+rustdesk --password "$rustdesk_pw" &> /dev/null
+rustdesk --config "$rustdesk_cfg"
+systemctl restart rustdesk 2>/dev/null || true
 
 echo "..............................................."
 echo "RustDesk ID: $rustdesk_id"
-echo "Password: $rustdesk_pw"
+echo "Senha permanente: $rustdesk_pw"
+echo "Servidor configurado com sucesso."
 echo "..............................................."

@@ -149,6 +149,7 @@ e timer semanal de manutenção.
 | [`docs/08-hardware.md`](docs/08-hardware.md) | Tomadores de decisão | Dimensionamento de hardware para 4 cenários |
 | [`docs/09-vps.md`](docs/09-vps.md) | Tomadores de decisão | ★ Guia completo: 14 provedores, tabelas, matriz de decisão, passo a passo de contratação |
 | [`docs/10-estudo-custo-beneficio.md`](docs/10-estudo-custo-beneficio.md) | Tomadores de decisão | ★ Estudo custo-benefício: 6 métodos de exposição, 3 licenças, alternativas gerenciadas |
+| [`docs/11-manual-operacional-cliente.md`](docs/11-manual-operacional-cliente.md) | Usuários finais | ★ Manual completo: instalação em 7 plataformas, configuração, uso, troubleshooting |
 
 ---
 
@@ -161,6 +162,15 @@ e timer semanal de manutenção.
 | [`scripts/deploy-client-windows.ps1`](scripts/deploy-client-windows.ps1) | Deploy em massa para Windows (PowerShell) |
 | [`scripts/deploy-client-linux.sh`](scripts/deploy-client-linux.sh) | Deploy em massa para Linux |
 | [`scripts/deploy-client-macos.sh`](scripts/deploy-client-macos.sh) | Deploy em massa para macOS |
+
+## Manual do Cliente
+
+Para usuários finais e operadores sem conhecimento técnico:
+
+👉 [`docs/11-manual-operacional-cliente.md`](docs/11-manual-operacional-cliente.md)
+
+Cobre instalação, configuração e uso em **todas as plataformas** (Windows, macOS,
+Linux, Android, iOS e Web), com linguagem acessível, glossário e solução de problemas.
 
 ---
 
@@ -221,7 +231,8 @@ myrustdesk/
 │   ├── 07-cloudflare-tunnel.md       # ★ Exposição via Cloudflare
 │   ├── 08-hardware.md                # ★ Dimensionamento de hardware
 │   ├── 09-vps.md                     # ★ Guia de 14 provedores VPS
-│   └── 10-estudo-custo-beneficio.md  # ★ Estudo custo-benefício acesso externo
+│   ├── 10-estudo-custo-beneficio.md  # ★ Estudo custo-benefício acesso externo
+│   └── 11-manual-operacional-cliente.md # ★ Manual operacional do cliente
 └── scripts/
     ├── provision-vps.sh              # ★ Provisionamento automático de VPS
     ├── setup-server.sh               # ★ Implantação do servidor

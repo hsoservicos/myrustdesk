@@ -41,6 +41,16 @@ Manter documentação completa e scripts automatizados para implantação de ser
   - Alternativas gerenciadas nacionais e internacionais (SoftAcesso, GoDesk, RDP.sh)
   - Custos ocultos (tempo de manutenção, riscos, vendor lock-in)
   - Fluxo de decisão e recomendações por perfil
+- Criação de `docs/11-manual-operacional-cliente.md` — manual operacional completo para operadores leigos:
+  - Instalação no Windows (exe + MSI), macOS (Intel + Apple Silicon), Linux (deb/rpm/AppImage/Flatpak), Android, iOS, Web
+  - Configuração do servidor corporativo (importar config + manual)
+  - Uso do RustDesk (conectar, transferir arquivos, encerrar)
+  - Acesso remoto sem supervisão (senha permanente, serviço em segundo plano)
+  - Solução de problemas (11 cenários), glossário, anexos com atalhos e portas
+- Scripts de deploy revisados com detecção dinâmica de versão via API GitHub:
+  - `scripts/deploy-client-windows.ps1`: suporte a x86_64/x86_32, download via API, instalação MSI
+  - `scripts/deploy-client-linux.sh`: detecção de arquitetura (x86_64/aarch64/armv7), RPM + DEB + pacman
+  - `scripts/deploy-client-macos.sh`: detecção Intel vs Apple Silicon, download via API
 
 ### In Progress
 - (none)
