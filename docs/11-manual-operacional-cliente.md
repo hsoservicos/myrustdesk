@@ -57,7 +57,7 @@ A empresa tem um **servidor próprio** de RustDesk. Isso significa que:
 
 1. **Baixe o instalador**
    - Acesse: https://github.com/rustdesk/rustdesk/releases/latest
-   - Clique no arquivo `RustDesk-1.4.0-x86_64.exe` (ou o número mais recente)
+   - Clique no arquivo `RustDesk-1.4.7-x86_64.exe` (ou o número mais recente)
 
 2. **Execute o instalador**
    - Dê um duplo clique no arquivo baixado
@@ -100,8 +100,8 @@ O RustDesk aparece como um ícone na **bandeja do sistema** (cantinho inferior d
 
 1. **Baixe o instalador**
    - Acesse: https://github.com/rustdesk/rustdesk/releases/latest
-   - **Mac com chip Intel:** baixe o arquivo `RustDesk-1.4.0-x86_64.dmg`
-   - **Mac com chip M1/M2/M3/M4:** baixe o arquivo `RustDesk-1.4.0-aarch64.dmg`
+- **Mac com chip Intel:** baixe o arquivo `RustDesk-1.4.7-x86_64.dmg`
+- **Mac com chip M1/M2/M3/M4:** baixe o arquivo `RustDesk-1.4.7-aarch64.dmg`
 
 2. **Instale**
    - Dê um duplo clique no arquivo `.dmg` baixado
@@ -196,7 +196,7 @@ sudo pacman -S rustdesk
    - Opção 1: Pela **Google Play Store** — procure por "RustDesk Remote Desktop"
    - Opção 2: Baixe o arquivo `.apk` do GitHub:
      https://github.com/rustdesk/rustdesk/releases/latest
-     (escolha o arquivo `RustDesk-1.4.0.apk`)
+     (escolha o arquivo `RustDesk-1.4.7-universal-signed.apk`)
 
 2. **Instale**
    - Se baixou da Play Store: instala automaticamente

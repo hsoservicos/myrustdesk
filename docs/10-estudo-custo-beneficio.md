@@ -1,7 +1,7 @@
 # Estudo de Custo-Benefício — RustDesk Server para Acesso Externo
 
 > **Data:** Junho 2026
-> **Versão RustDesk:** 1.3.x (server) / 1.3.x (client)
+> **Versão RustDesk:** 1.4.7 (server) / 1.4.7 (client)
 > **Propósito:** Auxiliar na escolha da melhor combinação de servidor,
 > método de exposição externa e plano de licenciamento para cada perfil de uso.
 

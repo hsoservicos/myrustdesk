@@ -57,6 +57,7 @@ Manter documentação completa, scripts automatizados e estudos de custo-benefí
 - Criação de `docs/14-implantacao-cloudflare.md` — guia detalhado para leigos: criar conta Cloudflare → configurar túnel Zero Trust + WARP → testar, com glossário e anexo.
 - Criação de `.github/workflows/syntax-checks.yml` — CI com 4 jobs: ShellCheck (.sh), PSScriptAnalyzer (.ps1), yamllint (compose), ShellCheck (raiz).
 - Criação de `docs/15-auditoria-aplicativos.md` — auditoria dos aplicativos cliente baixados (apps/), links oficiais v1.4.7, tabela completa de downloads, correção de URLs desatualizadas na documentação.
+- Correção de URLs hardcoded desatualizadas em 3 documentos: MANUAL_IMPLANTACAO.md (1.2.6), docs/04-deployment-clientes.md (1.2.6), docs/11-manual-operacional-cliente.md (1.4.0) — todas apontam agora para v1.4.7 com aviso para verificar versão mais recente.
 
 ### In Progress
 - (none)
@@ -74,10 +75,14 @@ Manter documentação completa, scripts automatizados e estudos de custo-benefí
 - HostGator US/Global não recomendado (custo 8x maior que Hetzner para mesma RAM).
 - Tailscale Free + Direct IP (US$ 0) recomendado para uso pessoal/família — elimina servidor RustDesk.
 - Alternativas gerenciadas (SoftAcesso, GoDesk) mais baratas que self-hosted para quem não tem conhecimento técnico.
+- Fluxo de implantação separado em 2 guias independentes para leigos (13-VPS, 14-Cloudflare), com 12 como visão geral para coordenadores.
+- `apps/` criado como cache local de binários para instalação manual off-line no servidor; scripts de deploy ignoram a pasta e usam API GitHub dinâmica.
+- Detecção dinâmica de versão via API GitHub é o padrão para todos os scripts de deploy cliente.
+- URLs na documentação devem sempre apontar para o release mais recente ou para a página de releases (não hardcoded).
 
 ## Next Steps
-- (nenhum pendente — ambos os itens concluídos)
-- Possíveis próximos: adicionar testes de integração Docker, validar scripts em container Ubuntu 24.04 real, criar vídeo tutorial ou documentação em vídeo.
+- (nenhum pendente)
+- Possíveis próximos: adicionar testes de integração Docker, validar scripts em container Ubuntu 24.04 real, criar vídeo tutorial ou documentação em vídeo, baixar os 6 binários RPM/AppImage/Arch que ainda faltam em apps/.
 
 ## Critical Context
 - RustDesk depende de **UDP** (porta 21116) para heartbeat/ID registration. Cloudflare Tunnel gratuito **não** proxy UDP — apenas WARP (overlay WireGuard) suporta UDP.
@@ -92,19 +97,23 @@ Manter documentação completa, scripts automatizados e estudos de custo-benefí
 - SoftAcesso: R$ 29/mês, suporte PT-BR, PIX, sem necessidade de servidor. 87% mais barato que self-hosted para não-técnicos.
 - Scripts deploy-cliente agora usam API GitHub para detectar a versão mais recente dinamicamente.
 - iOS só pode **controlar** outros dispositivos, não pode ser controlado.
+- Versão mais recente do cliente RustDesk: **1.4.7** (lançada 02 Jun 2026). Disponível em: https://github.com/rustdesk/rustdesk/releases/tag/1.4.7
+- `apps/` contém 14 binários v1.4.7 (~457 MB): Windows x64/x86-32, macOS Intel/ARM, Linux .deb x86_64/ARM64/ARMv7, Flatpak x86_64/ARM64, AppImage ARM64, Android Universal/ARM64/ARMv7. Faltam 6 (RPM x86_64/ARM64, Suse x86_64/ARM64, AppImage x86_64, Arch Linux).
+- CI executa ShellCheck (scripts/*.sh), PSScriptAnalyzer (scripts/*.ps1), yamllint (compose.yml, compose-cloudflared.yml) em todo push/PR.
 
 ## Relevant Files
 - `/home/hsantos/projetos/rustdesk/compose.yml`: orquestração Docker hbbs + hbbr (network_mode host).
 - `/home/hsantos/projetos/rustdesk/compose-cloudflared.yml`: container cloudflared com TUNNEL_TOKEN.
 - `/home/hsantos/projetos/rustdesk/.env`: variáveis de ambiente (ALWAYS_USE_RELAY, ENCRYPTED_ONLY).
 - `/home/hsantos/projetos/rustdesk/MANUAL_IMPLANTACAO.md`: manual completo para iniciante.
+- `/home/hsantos/projetos/rustdesk/AGENTS.md`: registro de progresso, decisões e contexto crítico.
+- `/home/hsantos/projetos/rustdesk/README.md`: landing page GitHub do repositório.
 - `/home/hsantos/projetos/rustdesk/scripts/setup-server.sh`: implantação automática do servidor.
 - `/home/hsantos/projetos/rustdesk/scripts/provision-vps.sh`: provisionamento completo de VPS.
 - `/home/hsantos/projetos/rustdesk/scripts/deploy-client-windows.ps1`: deploy cliente Windows (PowerShell).
 - `/home/hsantos/projetos/rustdesk/scripts/deploy-client-linux.sh`: deploy cliente Linux.
 - `/home/hsantos/projetos/rustdesk/scripts/deploy-client-macos.sh`: deploy cliente macOS.
-- `/home/hsantos/projetos/rustdesk/README.md`: landing page GitHub do repositório.
-- `/home/hsantos/projetos/rustdesk/docs/01-arquitetura.md` a `06-solucao-de-problemas.md`: documentação técnica.
+- `/home/hsantos/projetos/rustdesk/docs/01-arquitetura.md` a `06-solucao-de-problemas.md`: documentação técnica (arquitetura, instalação, clientes, deploy, manutenção, troubleshooting).
 - `/home/hsantos/projetos/rustdesk/docs/07-cloudflare-tunnel.md`: 4 métodos de exposição externa via Cloudflare.
 - `/home/hsantos/projetos/rustdesk/docs/08-hardware.md`: dimensionamento de hardware (4 cenários + calculadora).
 - `/home/hsantos/projetos/rustdesk/docs/09-vps.md`: guia completo de VPS com 14 provedores.
@@ -113,8 +122,7 @@ Manter documentação completa, scripts automatizados e estudos de custo-benefí
 - `/home/hsantos/projetos/rustdesk/docs/12-fluxo-implantacao.md`: visão geral dos 3 fluxos para coordenadores.
 - `/home/hsantos/projetos/rustdesk/docs/13-implantacao-vps.md`: guia VPS detalhado para leigos.
 - `/home/hsantos/projetos/rustdesk/docs/14-implantacao-cloudflare.md`: guia Cloudflare detalhado para leigos.
-- `/home/hsantos/projetos/rustdesk/docs/15-auditoria-aplicativos.md`: auditoria dos aplicativos cliente baixados (apps/), links oficiais v1.4.7, tabela completa de downloads, correção de URLs desatualizadas na documentação.
+- `/home/hsantos/projetos/rustdesk/docs/15-auditoria-aplicativos.md`: auditoria de apps baixados, tabela de links oficiais v1.4.7, SHA-256 checksums.
 - `/home/hsantos/projetos/rustdesk/.github/workflows/syntax-checks.yml`: CI com ShellCheck, PSScriptAnalyzer, yamllint.
-
----
-
+- `/home/hsantos/projetos/rustdesk/.gitignore`: exclui rustdesk-data/, .env.*, apps/.
+- `/home/hsantos/projetos/rustdesk/apps/`: cache local de binários RustDesk 1.4.7 (14 arquivos, ~457 MB).

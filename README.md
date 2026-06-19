@@ -17,7 +17,7 @@
   <img src="https://img.shields.io/badge/Ubuntu-22.04%2F24.04-orange?logo=ubuntu" alt="Ubuntu">
   <img src="https://img.shields.io/badge/Debian-12-red?logo=debian" alt="Debian">
   <img src="https://img.shields.io/badge/Cloudflare-WARP-f38020?logo=cloudflare" alt="Cloudflare">
-  <img src="https://img.shields.io/badge/RustDesk-1.3.x-8bc0d0" alt="RustDesk">
+  <img src="https://img.shields.io/badge/RustDesk-1.4.7-8bc0d0" alt="RustDesk">
   <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
 </p>
 
@@ -37,8 +37,8 @@ Inclui:
 - **Guia VPS** com 14 provedores analisados e comparados
 - **Cloudflare Tunnel + WARP** para exposição externa segura
 - **Provisionamento automatizado** do zero na VPS
-- **Fluxo único de implantação** — 6 etapas para sair do zero
-- **CI integrado** — validação de sintaxe de todos os scripts
+- **Fluxo modular de implantação** — visão geral + guias VPS e Cloudflare separados
+- **CI integrado** — ShellCheck, PSScriptAnalyzer, yamllint em cada push
 
 ---
 
@@ -53,9 +53,10 @@ Inclui:
 - **🛡️ Cloudflare WARP** — exposição externa gratuita com suporte a UDP
 - **📘 Manual para leigos** — passo a passo desde "o que é uma VPS" até "cliente conectado"
 - **🔧 Provisionamento completo** — SSH hardening, fail2ban, unattended-upgrades, swap
-- **🗺️ Fluxo único de implantação** — visão geral + guias separados para VPS e Cloudflare
+- **🗺️ Fluxo modular de implantação** — docs/12 visão geral + docs/13 VPS + docs/14 Cloudflare
 - **📖 Guias para leigos** — documentação específica para instaladores sem experiência em TI
-- **✅ CI integrado** — validação automática de sintaxe de todos os scripts
+- **📋 Auditoria de aplicativos** — docs/15 com SHA-256 de todos os binários baixados
+- **✅ CI integrado** — ShellCheck, PSScriptAnalyzer, yamllint em cada push/PR
 
 ---
 
@@ -336,8 +337,13 @@ executa automaticamente ShellCheck, PSScriptAnalyzer e yamllint em cada push/PR.
 - [x] Script de provisionamento de VPS
 - [x] Deploy scripts para clientes (Win/Lin/macOS)
 - [x] Manual completo para iniciantes
-- [x] Fluxo unificado VPS → provisionar → Cloudflare → deploy clientes
-- [x] CI com testes de sintaxe (ShellCheck + PSScriptAnalyzer + yamllint)
+- [x] Manual operacional do cliente (7 plataformas)
+- [x] Estudo custo-benefício (6 métodos de exposição, 3 licenças)
+- [x] Fluxo modular de implantação (docs/12 + docs/13 + docs/14)
+- [x] CI com ShellCheck + PSScriptAnalyzer + yamllint
+- [x] Auditoria de apps cliente (docs/15) com SHA-256
+- [x] Correção de URLs desatualizadas na documentação
+- [ ] Download dos 6 binários faltantes em apps/ (RPM, Suse, AppImage x86_64, Arch)
 - [ ] Suporte a Docker Compose com rede bridge (alternativa a host)
 - [ ] Template de configuração Ansible
 
