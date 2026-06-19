@@ -52,7 +52,9 @@ Manter documentação completa, scripts automatizados e estudos de custo-benefí
   - `scripts/deploy-client-windows.ps1`: suporte a x86_64/x86_32, download via API, instalação MSI
   - `scripts/deploy-client-linux.sh`: detecção de arquitetura (x86_64/aarch64/armv7), RPM + DEB + pacman
   - `scripts/deploy-client-macos.sh`: detecção Intel vs Apple Silicon, download via API
-- Criação de `docs/12-fluxo-implantacao.md` — fluxo único de implantação do zero: contratar VPS → provisionar → verificar → expor Cloudflare → deploy clientes → testar, com referências cruzadas para todos os docs.
+- Criação de `docs/12-fluxo-implantacao.md` — visão geral dos 3 fluxos para coordenadores, com referências cruzadas.
+- Criação de `docs/13-implantacao-vps.md` — guia detalhado para leigos: contratar VPS → provisionar → verificar, explicando cada conceito e comando.
+- Criação de `docs/14-implantacao-cloudflare.md` — guia detalhado para leigos: criar conta Cloudflare → configurar túnel Zero Trust + WARP → testar, com glossário e anexo.
 - Criação de `.github/workflows/syntax-checks.yml` — CI com 4 jobs: ShellCheck (.sh), PSScriptAnalyzer (.ps1), yamllint (compose), ShellCheck (raiz).
 
 ### In Progress
@@ -107,7 +109,9 @@ Manter documentação completa, scripts automatizados e estudos de custo-benefí
 - `/home/hsantos/projetos/rustdesk/docs/09-vps.md`: guia completo de VPS com 14 provedores.
 - `/home/hsantos/projetos/rustdesk/docs/10-estudo-custo-beneficio.md`: estudo custo-benefício com 6 métodos de exposição, 3 licenças, fluxo de decisão.
 - `/home/hsantos/projetos/rustdesk/docs/11-manual-operacional-cliente.md`: manual operacional do cliente para 7 plataformas (leigos).
-- `/home/hsantos/projetos/rustdesk/docs/12-fluxo-implantacao.md`: fluxo único de implantação do zero.
+- `/home/hsantos/projetos/rustdesk/docs/12-fluxo-implantacao.md`: visão geral dos 3 fluxos para coordenadores.
+- `/home/hsantos/projetos/rustdesk/docs/13-implantacao-vps.md`: guia VPS detalhado para leigos.
+- `/home/hsantos/projetos/rustdesk/docs/14-implantacao-cloudflare.md`: guia Cloudflare detalhado para leigos.
 - `/home/hsantos/projetos/rustdesk/.github/workflows/syntax-checks.yml`: CI com ShellCheck, PSScriptAnalyzer, yamllint.
 
 ---

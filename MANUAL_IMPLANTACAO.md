@@ -668,3 +668,16 @@ cd ~/rustdesk && tar -czf backup-$(date +%Y%m%d).tar.gz rustdesk-data/
 
 ---
 
+## Anexo: Guias Detalhados para o Instalador
+
+Este manual é o guia principal. Se você é o **colaborador responsável pela
+instalação**, consulte também os guias específicos:
+
+| Guia | Para que serve |
+|---|---|
+| [`docs/13-implantacao-vps.md`](docs/13-implantacao-vps.md) | ★ Explica como contratar a VPS, acessar e rodar o script — ideal para quem nunca fez isso |
+| [`docs/14-implantacao-cloudflare.md`](docs/14-implantacao-cloudflare.md) | ★ Explica como configurar o Cloudflare Tunnel para acesso pela internet |
+| [`docs/12-fluxo-implantacao.md`](docs/12-fluxo-implantacao.md) | ★ Visão geral dos fluxos para o coordenador |
+
+---
+

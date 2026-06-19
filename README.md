@@ -53,7 +53,8 @@ Inclui:
 - **🛡️ Cloudflare WARP** — exposição externa gratuita com suporte a UDP
 - **📘 Manual para leigos** — passo a passo desde "o que é uma VPS" até "cliente conectado"
 - **🔧 Provisionamento completo** — SSH hardening, fail2ban, unattended-upgrades, swap
-- **🗺️ Fluxo único de implantação** — do zero ao cliente funcionando em 6 etapas
+- **🗺️ Fluxo único de implantação** — visão geral + guias separados para VPS e Cloudflare
+- **📖 Guias para leigos** — documentação específica para instaladores sem experiência em TI
 - **✅ CI integrado** — validação automática de sintaxe de todos os scripts
 
 ---
@@ -136,6 +137,14 @@ Este script faz tudo: cria usuário não-root, hardening SSH, Docker, UFW,
 fail2ban, unattended-upgrades, swap (se RAM ≤ 2 GB), containers RustDesk
 e timer semanal de manutenção.
 
+### Guias Passo a Passo para Instaladores Iniciantes
+
+| Guia | O que cobre |
+|---|---|
+| 👉 [`docs/13-implantacao-vps.md`](docs/13-implantacao-vps.md) | Contratar VPS → executar script → verificar — explicado para quem nunca fez isso |
+| 👉 [`docs/14-implantacao-cloudflare.md`](docs/14-implantacao-cloudflare.md) | Criar conta Cloudflare → configurar túnel → instalar WARP — passo a passo |
+| 👉 [`docs/12-fluxo-implantacao.md`](docs/12-fluxo-implantacao.md) | Visão geral dos 3 fluxos para coordenadores |
+
 ---
 
 ## Documentação
@@ -154,7 +163,9 @@ e timer semanal de manutenção.
 | [`docs/09-vps.md`](docs/09-vps.md) | Tomadores de decisão | ★ Guia completo: 14 provedores, tabelas, matriz de decisão, passo a passo de contratação |
 | [`docs/10-estudo-custo-beneficio.md`](docs/10-estudo-custo-beneficio.md) | Tomadores de decisão | ★ Estudo custo-benefício: 6 métodos de exposição, 3 licenças, alternativas gerenciadas |
 | [`docs/11-manual-operacional-cliente.md`](docs/11-manual-operacional-cliente.md) | Usuários finais | ★ Manual completo: instalação em 7 plataformas, configuração, uso, troubleshooting |
-| [`docs/12-fluxo-implantacao.md`](docs/12-fluxo-implantacao.md) | Administradores | ★ Fluxo único do zero: contratar VPS → provisionar → expor → deploy clientes |
+| [`docs/12-fluxo-implantacao.md`](docs/12-fluxo-implantacao.md) | Coordenadores | ★ Visão geral dos 3 fluxos: VPS → Cloudflare → Clientes |
+| [`docs/13-implantacao-vps.md`](docs/13-implantacao-vps.md) | Instaladores (iniciantes) | ★ Guia VPS: contratar → provisionar → verificar — passo a passo para leigos |
+| [`docs/14-implantacao-cloudflare.md`](docs/14-implantacao-cloudflare.md) | Instaladores (iniciantes) | ★ Guia Cloudflare: túnel → WARP → testar — passo a passo para leigos |
 
 ---
 
@@ -241,7 +252,9 @@ myrustdesk/
 │   ├── 09-vps.md                     # ★ Guia de 14 provedores VPS
 │   ├── 10-estudo-custo-beneficio.md  # ★ Estudo custo-benefício acesso externo
 │   ├── 11-manual-operacional-cliente.md # ★ Manual operacional do cliente
-│   └── 12-fluxo-implantacao.md       # ★ Fluxo único de implantação
+│   ├── 12-fluxo-implantacao.md       # ★ Visão geral: fluxo de implantação
+│   ├── 13-implantacao-vps.md         # ★ Guia VPS para leigos
+│   └── 14-implantacao-cloudflare.md  # ★ Guia Cloudflare para leigos
 └── scripts/
     ├── provision-vps.sh              # ★ Provisionamento automático de VPS
     ├── setup-server.sh               # ★ Implantação do servidor
