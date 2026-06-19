@@ -148,6 +148,7 @@ e timer semanal de manutenção.
 | [`docs/07-cloudflare-tunnel.md`](docs/07-cloudflare-tunnel.md) | Técnicos | ★ Exposição externa: 4 métodos Cloudflare (recomendado: WARP) |
 | [`docs/08-hardware.md`](docs/08-hardware.md) | Tomadores de decisão | Dimensionamento de hardware para 4 cenários |
 | [`docs/09-vps.md`](docs/09-vps.md) | Tomadores de decisão | ★ Guia completo: 14 provedores, tabelas, matriz de decisão, passo a passo de contratação |
+| [`docs/10-estudo-custo-beneficio.md`](docs/10-estudo-custo-beneficio.md) | Tomadores de decisão | ★ Estudo custo-benefício: 6 métodos de exposição, 3 licenças, alternativas gerenciadas |
 
 ---
 
@@ -219,7 +220,8 @@ myrustdesk/
 │   ├── 06-solucao-de-problemas.md    # Troubleshooting
 │   ├── 07-cloudflare-tunnel.md       # ★ Exposição via Cloudflare
 │   ├── 08-hardware.md                # ★ Dimensionamento de hardware
-│   └── 09-vps.md                     # ★ Guia de 14 provedores VPS
+│   ├── 09-vps.md                     # ★ Guia de 14 provedores VPS
+│   └── 10-estudo-custo-beneficio.md  # ★ Estudo custo-benefício acesso externo
 └── scripts/
     ├── provision-vps.sh              # ★ Provisionamento automático de VPS
     ├── setup-server.sh               # ★ Implantação do servidor
@@ -280,7 +282,7 @@ Contribuições são bem-vindas!
 Antes de abrir um PR, verifique a sintaxe dos scripts:
 
 ```bash
-bash -n scripts/*.sh       # Validação de sintaxe Bash
+bash -n scripts/*.sh                 # Validação de sintaxe Bash
 pwsh -c "Get-Command scripts/*.ps1"  # Validação PowerShell
 ```
 

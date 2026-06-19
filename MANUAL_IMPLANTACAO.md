@@ -80,7 +80,7 @@ Aqui está o que você vai fazer, do começo ao fim:
 
 ```
 ┌──────────────────────────────────────────────────┐
-│ 1. Acessar o servidor (via SSH ou tela local)   │
+│ 1. Acessar o servidor (via SSH ou tela local)    │
 ├──────────────────────────────────────────────────┤
 │ 2. Atualizar o sistema                           │
 ├──────────────────────────────────────────────────┤

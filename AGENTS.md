@@ -33,6 +33,14 @@ Manter documentação completa e scripts automatizados para implantação de ser
 - README.md reescrito como artefato GitHub (banner, badges, arquitetura, docs, tabelas).
 - Tabelas comparativas atualizadas: Hostinger KVM 1 corrigido para 4 GB RAM / 50 GB NVMe; HostGator Snappy 2000 adicionado em Internacional; Hostinger e HostGator adicionados em benchmarks.
 - Repositório criado e sincronizado com GitHub: `https://github.com/hsoservicos/myrustdesk`
+- Criação de `docs/10-estudo-custo-beneficio.md` — estudo completo de custo-benefício para acesso externo:
+  - 5 perfis de uso (pessoal a enterprise)
+  - 6 métodos de exposição externa analisados (Porta direta, Cloudflare WARP, Tailscale, Pangolin, Caddy TLS, CGNAT relay)
+  - Tabelas comparativas (custo 12 meses, funcional, consumo banda)
+  - 3 opções de licenciamento (OSS, Pro Individual, Pro Basic/Customized)
+  - Alternativas gerenciadas nacionais e internacionais (SoftAcesso, GoDesk, RDP.sh)
+  - Custos ocultos (tempo de manutenção, riscos, vendor lock-in)
+  - Fluxo de decisão e recomendações por perfil
 
 ### In Progress
 - (none)
