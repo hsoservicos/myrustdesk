@@ -142,10 +142,11 @@ Abra o **Terminal** e digite:
 
 ```bash
 # Baixar o programa
-wget https://github.com/rustdesk/rustdesk/releases/download/1.4.0/rustdesk-1.4.0-x86_64.deb
+# ⚠️ Verifique a versão mais recente em: https://github.com/rustdesk/rustdesk/releases
+wget https://github.com/rustdesk/rustdesk/releases/download/1.4.7/rustdesk-1.4.7-x86_64.deb
 
 # Instalar
-sudo apt install -fy ./rustdesk-1.4.0-x86_64.deb
+sudo apt install -fy ./rustdesk-1.4.7-x86_64.deb
 
 # Iniciar
 rustdesk
@@ -155,10 +156,11 @@ rustdesk
 
 ```bash
 # Baixar o programa
-wget https://github.com/rustdesk/rustdesk/releases/download/1.4.0/rustdesk-1.4.0-0.x86_64.rpm
+# ⚠️ Verifique a versão mais recente em: https://github.com/rustdesk/rustdesk/releases
+wget https://github.com/rustdesk/rustdesk/releases/download/1.4.7/rustdesk-1.4.7-0.x86_64.rpm
 
 # Instalar
-sudo yum localinstall ./rustdesk-1.4.0-0.x86_64.rpm -y
+sudo dnf install -y ./rustdesk-1.4.7-0.x86_64.rpm
 
 # Iniciar
 rustdesk

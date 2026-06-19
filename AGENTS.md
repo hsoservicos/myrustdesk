@@ -56,6 +56,7 @@ Manter documentação completa, scripts automatizados e estudos de custo-benefí
 - Criação de `docs/13-implantacao-vps.md` — guia detalhado para leigos: contratar VPS → provisionar → verificar, explicando cada conceito e comando.
 - Criação de `docs/14-implantacao-cloudflare.md` — guia detalhado para leigos: criar conta Cloudflare → configurar túnel Zero Trust + WARP → testar, com glossário e anexo.
 - Criação de `.github/workflows/syntax-checks.yml` — CI com 4 jobs: ShellCheck (.sh), PSScriptAnalyzer (.ps1), yamllint (compose), ShellCheck (raiz).
+- Criação de `docs/15-auditoria-aplicativos.md` — auditoria dos aplicativos cliente baixados (apps/), links oficiais v1.4.7, tabela completa de downloads, correção de URLs desatualizadas na documentação.
 
 ### In Progress
 - (none)
@@ -112,6 +113,7 @@ Manter documentação completa, scripts automatizados e estudos de custo-benefí
 - `/home/hsantos/projetos/rustdesk/docs/12-fluxo-implantacao.md`: visão geral dos 3 fluxos para coordenadores.
 - `/home/hsantos/projetos/rustdesk/docs/13-implantacao-vps.md`: guia VPS detalhado para leigos.
 - `/home/hsantos/projetos/rustdesk/docs/14-implantacao-cloudflare.md`: guia Cloudflare detalhado para leigos.
+- `/home/hsantos/projetos/rustdesk/docs/15-auditoria-aplicativos.md`: auditoria dos aplicativos cliente baixados (apps/), links oficiais v1.4.7, tabela completa de downloads, correção de URLs desatualizadas na documentação.
 - `/home/hsantos/projetos/rustdesk/.github/workflows/syntax-checks.yml`: CI com ShellCheck, PSScriptAnalyzer, yamllint.
 
 ---

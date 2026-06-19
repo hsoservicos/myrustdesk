@@ -166,6 +166,7 @@ e timer semanal de manutenção.
 | [`docs/12-fluxo-implantacao.md`](docs/12-fluxo-implantacao.md) | Coordenadores | ★ Visão geral dos 3 fluxos: VPS → Cloudflare → Clientes |
 | [`docs/13-implantacao-vps.md`](docs/13-implantacao-vps.md) | Instaladores (iniciantes) | ★ Guia VPS: contratar → provisionar → verificar — passo a passo para leigos |
 | [`docs/14-implantacao-cloudflare.md`](docs/14-implantacao-cloudflare.md) | Instaladores (iniciantes) | ★ Guia Cloudflare: túnel → WARP → testar — passo a passo para leigos |
+| [`docs/15-auditoria-aplicativos.md`](docs/15-auditoria-aplicativos.md) | Todos | ★ Auditoria dos apps baixados + links oficiais v1.4.7 |
 
 ---
 
@@ -254,7 +255,8 @@ myrustdesk/
 │   ├── 11-manual-operacional-cliente.md # ★ Manual operacional do cliente
 │   ├── 12-fluxo-implantacao.md       # ★ Visão geral: fluxo de implantação
 │   ├── 13-implantacao-vps.md         # ★ Guia VPS para leigos
-│   └── 14-implantacao-cloudflare.md  # ★ Guia Cloudflare para leigos
+│   ├── 14-implantacao-cloudflare.md  # ★ Guia Cloudflare para leigos
+│   └── 15-auditoria-aplicativos.md   # ★ Auditoria de apps + links oficiais
 └── scripts/
     ├── provision-vps.sh              # ★ Provisionamento automático de VPS
     ├── setup-server.sh               # ★ Implantação do servidor

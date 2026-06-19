@@ -430,8 +430,9 @@ Se você já configurou um computador, pode exportar a configuração e importar
 ### Linux
 ```bash
 # Ubuntu/Debian
-wget https://github.com/rustdesk/rustdesk/releases/download/1.2.6/rustdesk-1.2.6-x86_64.deb
-sudo apt-get install -fy ./rustdesk-1.2.6-x86_64.deb
+# ⚠️ Verifique a versão mais recente em: https://github.com/rustdesk/rustdesk/releases
+wget https://github.com/rustdesk/rustdesk/releases/download/1.4.7/rustdesk-1.4.7-x86_64.deb
+sudo apt-get install -fy ./rustdesk-1.4.7-x86_64.deb
 ```
 
 ### Android
@@ -678,6 +679,7 @@ instalação**, consulte também os guias específicos:
 | [`docs/13-implantacao-vps.md`](docs/13-implantacao-vps.md) | ★ Explica como contratar a VPS, acessar e rodar o script — ideal para quem nunca fez isso |
 | [`docs/14-implantacao-cloudflare.md`](docs/14-implantacao-cloudflare.md) | ★ Explica como configurar o Cloudflare Tunnel para acesso pela internet |
 | [`docs/12-fluxo-implantacao.md`](docs/12-fluxo-implantacao.md) | ★ Visão geral dos fluxos para o coordenador |
+| [`docs/15-auditoria-aplicativos.md`](docs/15-auditoria-aplicativos.md) | ★ Auditoria dos aplicativos baixados + links oficiais para download |
 
 ---
 

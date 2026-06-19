@@ -40,7 +40,8 @@ Para ambientes sem PowerShell:
 @echo off
 set rustdesk_cfg="configstring"
 
-curl -L "https://github.com/rustdesk/rustdesk/releases/download/1.2.6/rustdesk-1.2.6-x86_64.exe" -o rustdesk.exe
+REM ⚠️ Verifique a versão mais recente em: https://github.com/rustdesk/rustdesk/releases
+curl -L "https://github.com/rustdesk/rustdesk/releases/download/1.4.7/rustdesk-1.4.7-x86_64.exe" -o rustdesk.exe
 rustdesk.exe --silent-install
 timeout /t 20
 
