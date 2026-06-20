@@ -3,7 +3,7 @@
 <!--    <source media="(prefers-color-scheme: dark)" srcset="https://rustdesk.com/logo.svg"> -->
     <source media="(prefers-color-scheme: dark)" srcset="https://github.com/rustdesk/rustdesk/blob/master/res/logo-header.svg">
 <!--    <img src="https://rustdesk.com/logo.svg" alt="RustDesk" width="200"> -->
-    <img src="https://github.com/rustdesk/rustdesk/blob/master/res/logo-header.svg" width="600">
+    <img src="https://github.com/rustdesk/rustdesk/blob/master/res/logo-header.svg" width="800">
   </picture>
 </p>
 
