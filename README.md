@@ -1,7 +1,9 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://rustdesk.com/logo.svg">
-    <img src="https://rustdesk.com/logo.svg" alt="RustDesk" width="200">
+<!--    <source media="(prefers-color-scheme: dark)" srcset="https://rustdesk.com/logo.svg"> -->
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/rustdesk/rustdesk/blob/master/res/logo-header.svg">
+<!--    <img src="https://rustdesk.com/logo.svg" alt="RustDesk" width="200"> -->
+    <img src="https://github.com/rustdesk/rustdesk/blob/master/res/logo-header.svg" width="300">
   </picture>
 </p>
 
